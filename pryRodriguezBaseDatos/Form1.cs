@@ -56,10 +56,29 @@ namespace pryRodriguezBaseDatos
                 label1.BackColor = Color.Green;
 
                 miLectorBD = miComandoBD.ExecuteReader();
+
+                OleDbDataReader miLectorBDGrupo;
+                miComandoBD.CommandType=CommandType.TableDirect;
+                miComandoBD.CommandText = "Grupos";
+                miLectorBDGrupo = miComandoBD.ExecuteReader();
+
+
+
+                string auxNombreGrupo;
                 while (miLectorBD.Read())
                 {
+                    
                     //label1.Text = label1.Text + miLectorBD[1] + "\n";
-                    dataGridView1.Rows.Add(miLectorBD[0], miLectorBD[1], miLectorBD[2], miLectorBD[3]);
+                    while (miLectorBDGrupo.Read())
+                    {
+                        if (miLectorBD[2] == miLectorBDGrupo[0])
+                        {
+                            auxNombreGrupo = miLectorBDGrupo[1].ToString();
+                        }
+                    }
+
+
+                    dataGridView1.Rows.Add(miLectorBD[0], miLectorBD[1], auxNombreGrupo, miLectorBD[3]);
                 }
             }
             catch (Exception error)
