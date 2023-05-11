@@ -11,12 +11,12 @@ using System.Data.OleDb;
 
 namespace pryRodriguezBaseDatos
 {
-    public partial class Form1 : Form
+    public partial class frmVerduleros : Form
     {
         OleDbCommand miComandoBD;
         OleDbConnection miConexionDB;
         OleDbDataReader miLectorBD;
-        public Form1()
+        public frmVerduleros()
         {
             InitializeComponent();
         }
@@ -64,7 +64,7 @@ namespace pryRodriguezBaseDatos
 
 
 
-                string auxNombreGrupo;
+                string auxNombreGrupo = "";
                 while (miLectorBD.Read())
                 {
                     
@@ -91,6 +91,11 @@ namespace pryRodriguezBaseDatos
         private void button3_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
